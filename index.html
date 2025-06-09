@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Igor Tomás</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div id="entrance-animation">
+            <div class="entrance-text">Welcome to Igor Tomás' Portfolio</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#portfolio">Work</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="intro" id="intro">
+            <h1>IGOR</h1>
+            <h1>TOMAS</h1>
+            <p>UI/UX Designer and Photography Enthusiast</p>
+        </section>
+        <section id="portfolio" class="my-works">
+            <h2>Projects</h2>
+            <div class="gallery">
+                <figure>
+                    <a href="Project1/index.html">
+                        <img src="images/E92 Photoshoot.jpg" alt="Project 1">
+                    </a>
+                    <figcaption>BMW E92 Photoshoot</figcaption>
+                </figure>
+                <figure>
+                    <a href="Project6/index.html">
+                    <img src="images/portrait (1).jpg" alt="Project 2">
+                    </a>
+                    <figcaption>Portraits</figcaption>
+                </figure>
+                <figure>
+                    <a href="Project3/index.html">
+                    <img src="images/ferrari.jpg" alt="Project 3">
+                    </a>
+                    <figcaption>Ferrari</figcaption>
+                </figure>
+                <figure>
+                    <a href="Project5/index.html">
+                    <img src="images/revuel.jpg" alt="Project 4">
+                    <figcaption>Edax Group</figcaption></a>
+                </figure>
+                <figure>
+                    <a href="Project4/index.html">
+                    <img src="images/porsche.jpg" alt="Project 5">
+                    <figcaption>Porsche 911</figcaption></a>
+                </figure>
+            </div>
+            <a href="archive.html" class="view-more">
+                <div>
+                    View More
+                </div>
+            </a>
+        </section>
+        <section id="about" class="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+            <div class="about-text">
+                <p>
+                Hello! My name is <strong>Igor Tomás</strong>, and I am a multimedia enthusiast from Portugal. I specialize in photography, Webdesign, and UI/UX design, blending creativity with technical expertise to craft visually appealing and user-friendly experiences.
+                </p>
+                <br>    
+                <p>
+                Over the years, I have worked on a variety of projects that reflect my diverse interests, ranging from professional web design to personal photography endeavors. My passion for storytelling through visuals drives me to constantly explore new techniques and push creative boundaries.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="images/about-me.jpg" alt="Igor Tomás">
+            </div>
+            </div>
+            <div class="about-decorations">
+            <div class="circle"></div>
+            <div class="square"></div>
+            </div>
+        </section>
+        <section id="contact" class="contact">
+            <h2>Contact Me</h2>
+            <p>If you’d like to get in touch, feel free to reach out through any of the platforms below:</p>
+            <div class="contact-icons">
+                <a href="mailto:your-email@example.com" class="icon email">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                </a>
+                <a href="https://www.linkedin.com/in/your-profile" class="icon linkedin" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/your-profile" class="icon github" target="_blank">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="tel:+1234567890" class="icon phone">
+                    <i class="fas fa-phone"></i>
+                    <span>Phone</span>
+                </a>
+            </div>
+        </section>
+    </main>
+    <div class="custom-cursor" id="customCursor"></div>
+    <div class="inverted-cursor" id="invertedCursor"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const entrance = document.getElementById("entrance-animation");
+            const navbar = document.querySelector("nav");
+
+            setTimeout(() => {
+                entrance.style.display = "none";
+                // Make navbar visible
+                navbar.classList.add("visible");
+            }, 4000); // Matches the animation duration
+        });
+
+        const cursor = document.getElementById("customCursor");
+
+        document.addEventListener("mousemove", (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+
+            // Create a water drop trail element
+            const trail = document.createElement("div");
+            trail.className = "cursor-trail";
+            trail.style.left = `${e.clientX}px`;
+            trail.style.top = `${e.clientY}px`;
+
+            document.body.appendChild(trail);
+
+            // Remove the trail after the animation
+            setTimeout(() => {
+                trail.remove();
+            }, 600); // Matches the waterDropFadeOut animation duration
+        });
+
+        document.querySelectorAll("a, button, img").forEach((element) => {
+            element.addEventListener("mouseenter", () => {
+                document.body.classList.add("hover-invert");
+            });
+
+            element.addEventListener("mouseleave", () => {
+                document.body.classList.remove("hover-invert");
+            });
+        });
+
+        document.querySelectorAll("a, button, img").forEach((element) => {
+            element.addEventListener("mouseenter", () => {
+                cursor.style.transform = "scale(1.5) translate(-50%, -50%)";
+            });
+
+            element.addEventListener("mouseleave", () => {
+                cursor.style.transform = "scale(1) translate(-50%, -50%)";
+            });
+        });
+
+        const invertedCursor = document.getElementById("invertedCursor");
+
+        document.addEventListener("mousemove", (e) => {
+            if (invertedCursor) {
+                invertedCursor.style.left = `${e.clientX}px`;
+                invertedCursor.style.top = `${e.clientY}px`;
+            }
+        });
+
+        // Debugging: Log cursor position to ensure the event is firing
+        document.addEventListener("mousemove", (e) => {
+            console.log(`Cursor moved to: X=${e.clientX}, Y=${e.clientY}`);
+        });
+    </script>
+</body>
+</html>

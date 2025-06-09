@@ -1,0 +1,682 @@
+/* Global Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+@font-face {
+    font-family: 'satoshi';
+    src: url('fonts/Satoshi-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'parvofln';
+    src: url('fonts/parvn.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'satoshi', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    padding-top: 4rem; /* Adjust this value to match the height of your header */
+    cursor: none; /* Hide the default cursor */
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+a, button, img {
+    cursor: none; /* Ensure the default hand cursor is hidden for clickable elements */
+}
+
+.arquivos{
+    background-color: #ffffff;
+    color: #000000;
+    padding: 2rem;
+    text-align: center; 
+}
+/* Header */
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+/* Intro Section */
+.intro {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 2rem;
+    background-color: #000;
+    color: #fff;
+    z-index: -1;
+}
+
+.intro h1 {
+    font-size: 14vw;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    color: white;
+    font-family: 'parvofln';
+}
+
+.intro p {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    color: rgb(166, 166, 166);
+}
+
+@media (max-width: 600px) {
+    .intro {
+        align-items: center;
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .intro h1 {
+        font-size: 20vw;
+    }
+
+    .intro p {
+        font-size: 1.2rem;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Navigation */
+nav {
+    background-color: #000; /* Ensure the navbar has a visible background */
+    color: #fff; /* Ensure the text is visible */
+    padding: 1rem 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000; /* Ensure the navbar is above other elements */
+    opacity: 1; /* Ensure the navbar is fully visible */
+    visibility: visible; /* Ensure the navbar is not hidden */
+    display: block; /* Ensure the navbar is displayed */
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.5s ease;
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* My Works Section */
+.my-works {
+    padding: 1rem;
+    text-align: center;
+    background-color: #fdfdfd;
+    color: #333;
+}
+
+.my-works h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    justify-items: center;
+    background-color: white;
+    color: black;
+}
+
+.gallery figure:first-child {
+    grid-column: span 2;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery figure {
+    margin: 1rem;
+    text-align: left;
+}
+
+.gallery figcaption {
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+    color: #000;
+    position: relative;
+}
+
+.gallery figcaption::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.5s ease;
+}
+
+.gallery figure:hover figcaption::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Add a "View more" button after the gallery */
+.gallery + .view-more {
+    display: inline-block;
+    margin: 1rem auto;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.gallery + .view-more:hover {
+    background-color: #333;
+    transform: scale(1.1);
+    color: #fff; /* Ensure text remains white */
+}
+
+/* About Section */
+.about {
+    padding: 2rem 2rem;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    line-height: 1.6;
+    position: relative;
+    overflow: hidden;
+}
+
+.about h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.about p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.about strong {
+    color: #ffcc00;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    animation: fadeIn 1.5s ease;
+}
+
+.about-text {
+    flex: 1;
+    animation: slideInLeft 1.5s ease;
+}
+
+.about-image {
+    flex: 1;
+    animation: slideInRight 1.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image img {
+    width: 60%; /* Reduce the width to make it smaller */
+    max-width: 400px; /* Set a maximum width for better responsiveness */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.about-decorations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.about-decorations .circle {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 0, 0, 0.2);
+    border-radius: 50%;
+    top: 10%;
+    left: 10%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.about-decorations .square {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(0, 0, 255, 0.2);
+    top: 70%;
+    left: 80%;
+    animation: float 8s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Contact Section */
+.contact {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+.contact-icons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.contact-icons .icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.contact-icons .icon i {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #ffcc00;
+    transition: color 0.3s ease;
+}
+
+.contact-icons .icon:hover {
+    transform: scale(1.1);
+    color: #ffcc00;
+}
+
+.contact-icons .icon:hover i {
+    color: #e6b800;
+}
+
+.contact-icons .icon span {
+    font-size: 1rem;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.contact-icons .icon:hover span {
+    color: #ffcc00;
+}
+
+/* Button Styles */
+.toggle-gallery {
+    margin: 1rem auto;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-gallery:hover {
+    background-color: #555;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Add styles for aligning back button and archive */
+.back-button, .archive {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1rem; /* Adjust spacing as needed */
+}
+
+/* Ensure proper alignment within their container */
+.back-archive-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Adjust alignment as needed */
+}
+
+/* Media Query for Mobile */
+@media (max-width: 600px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery figure:first-child {
+        grid-column: span 1;
+    }
+
+    .intro {
+        text-align: center;
+        align-items: center;
+        padding-left: 0;
+    }
+}
+@media (max-width: 600px) {
+    .gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        height: auto; /* Adjust height to prevent overlap */
+        margin-bottom: 2rem; /* Add spacing below the gallery */
+        gap: 3rem; /* Add spacing between gallery items */
+    }
+
+    .about {
+        margin-top: 2rem; /* Add spacing above the about section */
+    }
+
+    .gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .gallery figure:first-child {
+        grid-column: span 1;
+    }
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    justify-items: center;
+    background-color: #000000;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+/* Random grid layout */
+.gallery-grid img[alt="Image 1"] {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.gallery-grid img[alt="Horizontal Image 2"] {
+    grid-column: span 3;
+    grid-row: span 1;
+}
+
+.gallery-grid img[alt="Image 3"] {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+.gallery-grid img[alt="Horizontal Image 4"] {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.gallery-grid img[alt="Image 5"] {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Single column layout for mobile */
+        gap: 1rem;
+    }
+
+    .gallery-grid img {
+        grid-column: span 1 !important;
+        grid-row: auto;
+    }
+}
+.h1-projeto{
+    font-size: 0.6rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    background-color: blacks;
+    font-family: 'satoshi';
+    position: sticky;
+}
+
+/* Add styles to align the back button on the same line as the title */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    position: sticky;
+}
+
+.header-container h1 {
+    margin: 0;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+}
+
+.header-container button {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.header-container button:hover {
+    background-color: #797979;
+}
+
+.inverted-cursor {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    background-color: WHITE;
+    border: 0.01rem solid white; /* Add a visible border for debugging */
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000; /* Ensure the cursor is above all other elements */
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference; /* Inverts the colors of the background */
+    transition: transform 0.1s ease;
+}
+
+/* Entrance animation styles */
+#entrance-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    z-index: 1000;
+    animation: fadeOut 1.5s ease 2.5s forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.entrance-text {
+    animation: slideIn 1.5s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+nav {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+nav.visible {
+    opacity: 1;
+}
+
+/* Responsive styles for About Me section */
+@media (max-width: 900px) {
+    .about-content {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+        text-align: center;
+    }
+    .about-text, .about-image {
+        flex: unset;
+        width: 100%;
+        max-width: 100%;
+        animation: none;
+    }
+    .about-image img {
+        width: 80%;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    .about-decorations .circle,
+    .about-decorations .square {
+        display: none; /* Hide decorations on small screens for clarity */
+    }
+}
+
